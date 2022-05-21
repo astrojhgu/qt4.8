@@ -194,7 +194,7 @@ Q_INLINE_TEMPLATE bool QBasicAtomicPointer<T>::testAndSetOrdered(T *expectedValu
 {
     union { T * volatile * typed; void * volatile * voidp; } pointer;
     pointer.typed = &_q_value;
-    return QBasicAtomicPointer_testAndSetOrdered(pointer.voidp, expectedValue, newValue);
+    return QBasicAtomicPointer_testAndSetOrdered(pointer.voidp, (void*)expectedValue, (void*)newValue);
 }
 
 template <typename T>
